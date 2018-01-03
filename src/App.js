@@ -1,20 +1,31 @@
-import React, { Component } from "react";
-export default class App extends Component {
-  constructor() {
-    super();
+import React from "react";
+export default class Trial extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      test: ""
+      value: ""
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({ test: "Sanjay" });
+  /**
+   * On submitting the form the state variable is updated.
+   * @param {*} event
+   */
+  handleSubmit(event) {
+    event.preventDefault();
+    let formVal = event.target.input1.value;
+    this.setState({ value: event.target.input1.value });
+    console.log(`State updated : ${formVal}`);
   }
 
   render() {
     return (
       <div>
-        <div class="MyApp">Test Messsage : {this.state.test}</div>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="input1" />
+          <button type="submit">Submit</button>
+        </form>
       </div>
     );
   }
