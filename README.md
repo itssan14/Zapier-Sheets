@@ -1,1 +1,1 @@
-## Hasura Team Task 1 Boiler Plate Setup
+## Hasura Team Task 1

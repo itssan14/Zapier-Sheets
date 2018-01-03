@@ -12,6 +12,10 @@ export default class App extends Component {
   }
 
   render() {
-    return <div class="MyApp">Test Messsage : {this.state.test}</div>;
+    return (
+      <div>
+        <div class="MyApp">Test Messsage : {this.state.test}</div>
+      </div>
+    );
   }
 }
