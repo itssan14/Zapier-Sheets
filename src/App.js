@@ -1,32 +1,14 @@
 import React from "react";
-export default class Trial extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ""
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+import Navbar from "./components/Navbar";
+import InputForm from "./components/InputForm";
+import Reboot from "material-ui/Reboot";
 
-  /**
-   * On submitting the form the state variable is updated.
-   * @param {*} event
-   */
-  handleSubmit(event) {
-    event.preventDefault();
-    let formVal = event.target.input1.value;
-    this.setState({ value: event.target.input1.value });
-    console.log(`State updated : ${formVal}`);
-  }
+const App = () => (
+  <div>
+    <Reboot />
+    <Navbar />
+    <InputForm />
+  </div>
+);
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="input1" />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    );
-  }
-}
+export default App;

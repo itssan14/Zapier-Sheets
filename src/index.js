@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-import "./index.css";
 import App from "./App";
+import "typeface-roboto";
 import registerServiceWorker from "./registerServiceWorker";
 
 //Routing Setup
