@@ -29,7 +29,7 @@ export default class InputForm extends React.Component {
       axios
         .post("/info", {
           tableName: tabName,
-          tabInfo: tabInfo
+          tableInfo: tabInfo
         })
         .then(res => {
           console.log(res);
