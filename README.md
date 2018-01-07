@@ -4,6 +4,6 @@
 
 * Clone the repo
 * To setup the local development server use :
-  `sh yarn start`
+  `yarn start`
 * To build a static site :
-  `sh yarn build`
+  `yarn build`
