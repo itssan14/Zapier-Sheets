@@ -1,6 +1,6 @@
 import React from "react";
 
-const NoMatch = () => {
+const NotFound = () => {
   return (
     <div
       style={{
@@ -12,8 +12,13 @@ const NoMatch = () => {
       }}
     >
       <b style={{ fontSize: "50px" }}>404 Page Not Found!</b>
+      <br />
+      <div style={{ fontSize: "20px" }}>
+        The page you are trying to access does'nt exist. Go back to{" "}
+        <a href="/">home</a>
+      </div>
     </div>
   );
 };
 
-export default NoMatch;
+export default NotFound;
