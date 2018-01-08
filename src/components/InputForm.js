@@ -18,8 +18,7 @@ export default class InputForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  //Handle Submit Event
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
     let tabName = event.target.tableName.value;
     let tabInfo = event.target.tableInfo.value;
@@ -40,7 +39,7 @@ export default class InputForm extends React.Component {
     } else {
       this.setState({ open: true });
     }
-  }
+  };
 
   handleClose = () => {
     this.setState({ open: false });
