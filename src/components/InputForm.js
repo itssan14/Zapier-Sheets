@@ -11,7 +11,6 @@ export default class InputForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: "",
       resOpen: false,
       authorName: "",
       name: "",
@@ -43,7 +42,7 @@ export default class InputForm extends React.Component {
           authorName: authorName
         })
         .then(res => {
-          this.setState({ response: res.data, resOpen: true });
+          this.setState({ resOpen: true });
         })
         .catch(err => {
           console.log(err);
@@ -165,7 +164,7 @@ export default class InputForm extends React.Component {
                 }}
               >
                 <Typography style={{ padding: "20px 20px" }}>
-                  {this.state.response}
+                  Data succesfully entered into table {this.state.name}
                 </Typography>
               </Popover>
             </Grid>
