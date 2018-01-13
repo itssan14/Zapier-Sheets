@@ -14,8 +14,7 @@ const NotFound = () => {
       <b style={{ fontSize: "50px" }}>404 Page Not Found!</b>
       <br />
       <div style={{ fontSize: "20px" }}>
-        The page you are trying to access does'nt exist. Go back to{" "}
-        <a href="/">home</a>
+        The page you are trying to access does'nt exist. Go back to <a href="/">home</a>
       </div>
     </div>
   );
