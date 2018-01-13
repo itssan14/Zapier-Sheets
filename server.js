@@ -6,7 +6,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //Post Request
 app.post("/info", (req, res) => {
-  res.send(`Entered message was succesfully sent`);
+  res.send(
+    `Entered data was succesfully added into the table ${req.body.tableName}`
+  );
   console.log(req.body);
 });
 //Listening for request
