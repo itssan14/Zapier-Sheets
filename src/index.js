@@ -5,12 +5,14 @@ import "normalize-css";
 import NotFound from "./components/NotFound";
 import App from "./App";
 import Login from "./components/LoginPage";
+import TableNames from "./components/TableNames";
 import registerServiceWorker from "./registerServiceWorker";
 
 const Router = () => (
   <BrowserRouter>
     <Switch>
       <Route path="/" component={App} exact={true} />
+      <Route path="/tables" component={TableNames} />
       <Route path="/login" component={Login} />
       <Route component={NotFound} />
     </Switch>
