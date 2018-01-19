@@ -11,9 +11,9 @@ import registerServiceWorker from "./registerServiceWorker";
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={App} exact={true} />
+      <Route path="/" component={Login} exact={true} />
       <Route path="/tables" component={TableNames} />
-      <Route path="/login" component={Login} />
+      <Route path="/form" component={App} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

@@ -94,6 +94,8 @@ export default class InputForm extends React.Component {
                 name="tableName"
                 margin="normal"
                 placeholder="Enter Table Name"
+                value="SS"
+                disabled
                 fullWidth
                 required
               />
