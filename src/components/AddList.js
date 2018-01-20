@@ -49,8 +49,8 @@ export default class AddList extends React.Component {
         </Button>
         {/*Modal with a form to be placed inside of here. */}
         <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
+          aria-labelledby="Input Modal"
+          aria-describedby="Modal to input new tables to be registered"
           open={this.state.mopen}
           onClose={this.handleModalClose}
         >
@@ -82,22 +82,21 @@ export default class AddList extends React.Component {
 }
 
 function rand() {
-    return Math.floor(Math.random() * 20) - 10;
-  }
+  return Math.floor(Math.random() * 20) - 10;
+}
   
 function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
-
-    return {
-        position: 'absolute',
-        width: 8 * 50,
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-        border: '1px solid #e5e5e5',
-        backgroundColor: '#fff',
-        boxShadow: '0 5px 15px rgba(0, 0, 0, .5)',
-        padding: 8 * 4,
-    };
+  const top = 50 + rand();
+  const left = 50 + rand();
+  return {
+      position: 'absolute',
+      width: 8 * 50,
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+      border: '1px solid #e5e5e5',
+      backgroundColor: '#fff',
+      boxShadow: '0 5px 15px rgba(0, 0, 0, .5)',
+      padding: 8 * 4,
+  };
 }

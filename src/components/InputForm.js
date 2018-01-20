@@ -20,10 +20,14 @@ export default class InputForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  tableName = () => {
+    const url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&'); 
+    let tableName = url[0].slice(url[0].indexOf('=') + 1)
+    return tableName;
+  }
   handleSubmit = event => {
     event.preventDefault();
-    let tabName = event.target.tableName.value;
+    let tabName = this.tableName();
     let tabInfo = event.target.tableInfo.value;
     let sheetsLink = event.target.sheetsLink.value;
     let authorName = event.target.authorName.value;
@@ -83,21 +87,6 @@ export default class InputForm extends React.Component {
                 margin="normal"
                 placeholder="Enter Author Name"
                 fullWidth
-              />
-            </Grid>
-          </Grid>
-          <Grid container justify="center" alignItems="center" spacing={0}>
-            <Grid item xs={8}>
-              <TextField
-                id="name"
-                label="Table Name"
-                name="tableName"
-                margin="normal"
-                placeholder="Enter Table Name"
-                value="SS"
-                disabled
-                fullWidth
-                required
               />
             </Grid>
           </Grid>
