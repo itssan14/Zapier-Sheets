@@ -20,14 +20,10 @@ export default class InputForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  tableName = () => {
-    const url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&'); 
-    let tableName = url[0].slice(url[0].indexOf('=') + 1)
-    return tableName;
-  }
+
   handleSubmit = event => {
     event.preventDefault();
-    let tabName = this.tableName();
+    let tabName = window.location.href.slice(window.location.href.indexOf('=') + 1);
     let tabInfo = event.target.tableInfo.value;
     let sheetsLink = event.target.sheetsLink.value;
     let authorName = event.target.authorName.value;
