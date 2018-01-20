@@ -23,18 +23,18 @@ export default class AddList extends React.Component {
   handleModalOpen = () => {
     this.setState({ mopen: true });
   };
-    
+
   handleModalClose = () => {
     this.setState({ mopen: false });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     let tableName = event.target.tableName.value;
     this.props.update(tableName);
     this.setState({ mopen: false });
-  }
-  
+  };
+
   render() {
     return (
       <div>
@@ -54,49 +54,46 @@ export default class AddList extends React.Component {
           open={this.state.mopen}
           onClose={this.handleModalClose}
         >
-            <div style={getModalStyle()}>
-                <Grid container direction="column" alignItems="center">
-                    <Grid item>
-                        <Typography>Enter Input Here :</Typography>
-                    </Grid>
-                    <form onSubmit={this.handleSubmit}>
-                        <Grid item>
-                            <TextField 
-                                label="Enter Table Name"
-                                name="tableName"
-                                autoFocus
-                            />
-                        </Grid><br />   
-                        <Grid item>
-                            <Button type="submit" raised color="primary">
-                                Submit
-                            </Button>
-                        </Grid>
-                    </form>
+          <div style={getModalStyle()}>
+            <Grid container direction="column" alignItems="center">
+              <Grid item>
+                <Typography>Enter Input Here :</Typography>
+              </Grid>
+              <form onSubmit={this.handleSubmit}>
+                <Grid item>
+                  <TextField
+                    label="Enter Table Name"
+                    name="tableName"
+                    autoFocus
+                  />
                 </Grid>
-            </div>
+                <br />
+                <Grid item>
+                  <Button type="submit" raised color="primary">
+                    Submit
+                  </Button>
+                </Grid>
+              </form>
+            </Grid>
+          </div>
         </Modal>
       </div>
     );
   }
 }
 
-function rand() {
-  return Math.floor(Math.random() * 20) - 10;
-}
-  
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
   return {
-      position: 'absolute',
-      width: 8 * 50,
-      top: `${top}%`,
-      left: `${left}%`,
-      transform: `translate(-${top}%, -${left}%)`,
-      border: '1px solid #e5e5e5',
-      backgroundColor: '#fff',
-      boxShadow: '0 5px 15px rgba(0, 0, 0, .5)',
-      padding: 8 * 4,
+    position: "absolute",
+    width: 8 * 50,
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+    border: "1px solid #e5e5e5",
+    backgroundColor: "#fff",
+    boxShadow: "0 5px 15px rgba(0, 0, 0, .5)",
+    padding: 8 * 4
   };
 }

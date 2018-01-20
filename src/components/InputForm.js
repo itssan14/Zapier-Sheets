@@ -1,44 +1,42 @@
 import React from "react";
+import axios from "axios";
 import TextField from "material-ui/TextField";
 import Button from "material-ui/Button";
 import Grid from "material-ui/Grid";
 import AddIcon from "material-ui-icons/Add";
 import Typography from "material-ui/Typography";
 import Popover from "material-ui/Popover";
-import axios from "axios";
 
 export default class InputForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      resOpen: false,
-      authorName: "",
-      name: "",
-      content: "",
-      sheetsLink: "",
-      open: false
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  state = {
+    resOpen: false,
+    authorName: "",
+    name: "",
+    content: "",
+    title: "",
+    open: false
+  };
 
   handleSubmit = event => {
     event.preventDefault();
-    let tabName = window.location.href.slice(window.location.href.indexOf('=') + 1);
+    let tabName = window.location.href.slice(
+      window.location.href.indexOf("=") + 1
+    );
     let tabInfo = event.target.tableInfo.value;
-    let sheetsLink = event.target.sheetsLink.value;
+    let title = event.target.title.value;
     let authorName = event.target.authorName.value;
-    if (tabName !== "" && tabInfo !== "" && sheetsLink !== "") {
+    if (tabName !== "" && tabInfo !== "" && title !== "") {
       this.setState({
         name: tabName,
         content: tabInfo,
         authorName: authorName,
-        sheetsLink: sheetsLink
+        title: title
       });
       axios
         .post("/info", {
           tableName: tabName,
           tableInfo: tabInfo,
-          sheetsLink: sheetsLink,
+          title: title,
           authorName: authorName
         })
         .then(res => {
@@ -64,11 +62,10 @@ export default class InputForm extends React.Component {
           <Grid container justify="center" alignItems="center" spacing={0}>
             <Grid item xs={8}>
               <TextField
-                id="link"
-                label="Sheets Link"
-                name="sheetsLink"
+                label="Title"
+                name="title"
                 margin="normal"
-                placeholder="Enter Sheets Link"
+                placeholder="Enter the title field"
                 fullWidth
                 required
               />
@@ -77,7 +74,6 @@ export default class InputForm extends React.Component {
           <Grid container justify="center" alignItems="center" spacing={0}>
             <Grid item xs={8}>
               <TextField
-                id="name"
                 label="Author Name"
                 name="authorName"
                 margin="normal"
@@ -89,7 +85,6 @@ export default class InputForm extends React.Component {
           <Grid container justify="center" spacing={0}>
             <Grid item xs={8}>
               <TextField
-                id="name"
                 label="Content"
                 name="tableInfo"
                 margin="normal"
