@@ -10,16 +10,13 @@ import Grid from "material-ui/Grid";
  */
 
 export default class TableNames extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+   state = {
       tableNames: []
-    };
-  }
-
-  componentWillMount = () => {
+  };
+  
+  componentDidMount = () => {
     // If table names are previously provided store them in local memory , retrieve and display them
-    let items = JSON.parse(localStorage.getItem("tablesList"));
+    let items = JSON.parse(window.localStorage.getItem("tablesList"));
     if (items === null) {
       // WILL HAVE TO ADD A WARNING
     } else {
@@ -30,7 +27,7 @@ export default class TableNames extends React.Component {
   componentDidUpdate = () => {
     // On addition of new table details store the updated values into local storage
     let tablesList = JSON.stringify(this.state.tableNames);
-    localStorage.setItem("tablesList", tablesList);
+    window.localStorage.setItem("tablesList", tablesList);
   };
 
   updateTableList = newItem => {

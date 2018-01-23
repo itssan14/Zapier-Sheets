@@ -10,14 +10,9 @@ import TextField from "material-ui/TextField";
  * Adds a button to add new table names along with pre-existing set of tables in the state array.
  */
 export default class AddList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mopen: false
-    };
-    this.handleModalOpen = this.handleModalOpen.bind(this);
-    this.handleModalClose = this.handleModalClose.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  
+  state = {
+    mopen: false
   }
 
   handleModalOpen = () => {
