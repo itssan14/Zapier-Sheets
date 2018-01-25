@@ -12,44 +12,41 @@ export default class RegFrom extends React.Component {
   state = {
     open: false,
     errOpen: false,
-    fopen: false,
     age: "",
-    gender: "",
-    ageArr: [
-      "15-18",
-      "18-20",
-      "20-25",
-      "25-40",
-      "40-50",
-      "50-55",
-      "55-60",
-      "60 & above"
-    ]
+    gender: ""
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    if (event.target.pass.value === event.target.cpass.value) {
-      axios
-        .post("/info", {
-          name: event.target.name.value,
-          age: event.target.age.value,
-          email: event.target.email.value,
-          password: event.target.pass.value,
-          gender: event.target.gender.value,
-          bday: event.target.date.value,
-          address: event.target.address.value
-        })
-        .then(res => {
-          console.log(res);
-          this.setState({ open: true });
-        })
-        .catch(err => {
-          console.log(err);
-          this.setState({ fopen: true });
-        });
+    /**
+     * Verify if all the required fields are filled 
+     * If the required fields are filled then compare the password and conform password
+     * If they match send the info via post method  
+     */
+    if( event.target.name.value !== "" && event.target.email.value !== "" && event.target.pass.value !== "" && event.target.date.value !== "" && event.target.age.value !== "" && event.target.gender.value !== "") {
+      if (event.target.pass.value === event.target.cpass.value) {
+        axios
+          .post("/info", {
+            name: event.target.name.value,
+            age: event.target.age.value,
+            email: event.target.email.value,
+            password: event.target.pass.value,
+            gender: event.target.gender.value,
+            bday: event.target.date.value,
+            address: event.target.address.value
+          })
+          .then(res => {
+            console.log(res);
+            this.setState({ open: true });
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else {
+        this.setState({ errOpen: true });
+      }
     } else {
-      this.setState({ errOpen: true });
+      this.setState({ errOpen: true});
     }
   };
 
@@ -69,10 +66,11 @@ export default class RegFrom extends React.Component {
     this.setState({ open: false, errOpen: false, fopen: false });
   };
   render() {
+    const ageArr = ["15-18", "18-20", "20-25", "25-40", "40-50", "50-55", "55-60", "60 & above"];
     const genderArray = ["Male", "Female", "Cannot Disclose"];
     return (
       <div>
-        <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
+        <form noValidate="false" autoComplete="off" onSubmit={this.handleSubmit}>
           <Grid container justify="center" alignItems="center" spacing={0}>
             <Grid item xs={8}>
               <TextField
@@ -141,7 +139,7 @@ export default class RegFrom extends React.Component {
                     required
                   />
                 </Grid>
-                {/* Age Input Form */}
+                {/* Age Input Field */}
                 <Grid item xs={4}>
                   <TextField
                     select
@@ -154,14 +152,14 @@ export default class RegFrom extends React.Component {
                     fullWidth
                     required
                   >
-                    {this.state.ageArr.map(option => (
+                    {ageArr.map(option => (
                       <MenuItem key={option} value={option}>
                         {option}
                       </MenuItem>
                     ))}
                   </TextField>
                 </Grid>
-                {/* */}
+                {/* Gender Input Field */}
                 <Grid item xs={4}>
                   <TextField
                     select
@@ -225,20 +223,7 @@ export default class RegFrom extends React.Component {
           anchorPosition={{ top: 200, left: 400 }}
         >
           <Typography style={{ padding: "20px 20px" }}>
-            Please enter valid input.
-          </Typography>
-        </Popover>
-        <Popover
-          open={this.state.errOpen}
-          anchorEl={null}
-          anchorReference="anchorEl"
-          onClose={this.handleClose}
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-          transformOrigin={{ vertical: "top", horizontal: "center" }}
-          anchorPosition={{ top: 200, left: 400 }}
-        >
-          <Typography style={{ padding: "20px 20px" }}>
-            Registration failed.
+            Please enter valid input for all required fielss.
           </Typography>
         </Popover>
       </div>
