@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // FORM DATA
 app.post("/info", (req, res) => {
-  res.send(`Entered data was succesfully added into the table ${req.body.tableName}`);
+  res.send(`Registered Successfully`);
   console.log(req.body);
 });
 
