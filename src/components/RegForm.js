@@ -223,7 +223,7 @@ export default class RegFrom extends React.Component {
           anchorPosition={{ top: 200, left: 400 }}
         >
           <Typography style={{ padding: "20px 20px" }}>
-            Please enter valid input for all required fielss.
+            Please enter valid input for all required fields.
           </Typography>
         </Popover>
       </div>
