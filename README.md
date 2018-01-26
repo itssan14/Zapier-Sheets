@@ -1,8 +1,9 @@
 # Hasura Team Task 1
 
 ## Live Version
-  [Live Site]()
+
 ## Setup
+
 * Clone the repo
 * Run `npm install` to download all the dependencies of the project
 * To setup the local development server use :
