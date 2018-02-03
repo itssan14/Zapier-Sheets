@@ -11,7 +11,7 @@ const Router = () => (
   <BrowserRouter>
     <Switch>
       <Route path="/" component={Login} exact={true} />
-      <Route path="/form" component={App} />
+      <Route path="/reg" component={App} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

@@ -6,7 +6,6 @@ import MenuItem from "material-ui/Menu/MenuItem";
 import Typography from "material-ui/Typography";
 import AddIcon from "material-ui-icons/Add";
 import Popover from "material-ui/Popover";
-import Fetch from "isomorphic-fetch";
 
 export default class RegFrom extends React.Component {
   state = {
@@ -23,41 +22,23 @@ export default class RegFrom extends React.Component {
      * If the required fields are filled then compare the password and conform password
      * If they match send the info via post method  
      */
-    if( event.target.name.value !== "" && event.target.email.value !== "" && event.target.pass.value !== "" && event.target.date.value !== "" && event.target.age.value !== "" && event.target.gender.value !== "") {
-      if (event.target.pass.value === event.target.cpass.value) {
-        let url = "https://data.hatbox60.hasura-app.io/v1/query";
-        let requestOptions = { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer 70d44d040da6fbf7bb402a12652b20738e6d096a818a2375" } };
-        let body = { 
-          type: "insert",
-          args: { 
-            table: "user", 
-            objects: [{ 
-              name: event.target.name.value, 
-              email: event.target.email.value, 
-              password: event.target.pass.value, 
-              address: event.target.address.value, 
-              age: event.target.age.value, 
-              gender: event.target.gender.value, 
-              bday: event.target.date.value 
-            }] 
-          } 
-        };
-        requestOptions.body = JSON.stringify(body);
-        // AJAX REQUEST TO MICROSERVICE TO INSERT DATA
-        Fetch(url, requestOptions)
-          .then(function(response) {
-            return response.json();
-          })
-          .then(function(result) {
-            console.log(result);
-            this.setState({ open: true });
-          })
-          .catch(function(error) {
-            console.log("Request Failed:" + error);
-          });
-      } else {
-        this.setState({ errOpen: true });
-      }
+    if( event.target.name.value !== "" && event.target.date.value !== "" && event.target.age.value !== "" && event.target.gender.value !== "") {
+      let url = "https://data.hatbox60.hasura-app.io/v1/query";
+      let requestOptions = { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer 70d44d040da6fbf7bb402a12652b20738e6d096a818a2375" } };
+      let body = { type: "insert", args: { table: "user", objects: [{ name: event.target.name.value, email: event.target.email.value, password: event.target.pass.value, address: event.target.address.value, age: event.target.age.value, gender: event.target.gender.value, bday: event.target.date.value }] } };
+      requestOptions.body = JSON.stringify(body);
+      // AJAX REQUEST TO MICROSERVICE TO INSERT DATA
+      fetch(url, requestOptions)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(result) {
+          console.log(result);
+          this.setState({ open: true });
+        })
+        .catch(function(error) {
+          console.log("Request Failed:" + error);
+        });
     } else {
       this.setState({ errOpen: true});
     }
@@ -94,38 +75,6 @@ export default class RegFrom extends React.Component {
                 fullWidth
                 required
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={8}>
-              <TextField
-                label="Email"
-                name="email"
-                margin="normal"
-                placeholder="example@example.com"
-                fullWidth
-                required
-              />
-            </Grid>
-            <Grid item xs={8}>
-              <TextField
-                label="Password"
-                type="password"
-                name="pass"
-                margin="normal"
-                placeholder="Please enter your password"
-                fullWidth
-                required
-              />
-            </Grid>
-            <Grid item xs={8}>
-              <TextField
-                label="Confirm Password"
-                name="cpass"
-                type="password"
-                margin="normal"
-                placeholder="Please re-enter your password"
-                fullWidth
-                required
               />
             </Grid>
             <Grid item xs={8}>
