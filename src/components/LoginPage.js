@@ -4,7 +4,6 @@ import TextField from "material-ui/TextField";
 import Paper from "material-ui/Paper";
 import Button from "material-ui/Button";
 import Navbar from "./Navbar";
-import axios from "axios";
 
 export default class Login extends React.Component {
   constructor(props) {
