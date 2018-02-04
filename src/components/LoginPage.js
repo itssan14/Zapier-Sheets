@@ -17,16 +17,19 @@ export default class Login extends React.Component {
     let uname = event.target.uname.value;
     let pwd = event.target.pwd.value;
     if (uname !== "" && pwd !== "") {
-      axios
-        .post("/login", {
-          uname: uname,
-          password: pwd
+      fetch('/cred', {
+        method: "POST",
+        headers: "application/JSON",
+        body: JSON.stringify({
+            uname: uname,
+            password: pwd
         })
+      })
         .then(res => {
-          console.log(`${res}`);
+            console.log(`${res}`);
         })
         .catch(err => {
-          console.log(`${err}`);
+            console.log(`${err}`);
         });
     }
   };
